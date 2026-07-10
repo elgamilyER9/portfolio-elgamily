@@ -26,8 +26,10 @@ export default function SupNav() {
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
+      const locale = lang === "ar" ? "ar-EG" : "en-US";
+
       setDate(
-        now.toLocaleDateString(lang === "ar" ? "ar-EG" : undefined, {
+        now.toLocaleDateString(locale, {
           weekday: "short",
           day: "numeric",
           month: "short",
@@ -35,7 +37,7 @@ export default function SupNav() {
         })
       );
       setTime(
-        now.toLocaleTimeString(lang === "ar" ? "ar-EG" : undefined, {
+        now.toLocaleTimeString(locale, {
           hour: "2-digit",
           minute: "2-digit",
           second: "2-digit",
@@ -79,7 +81,7 @@ export default function SupNav() {
       clearInterval(timer);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [lang]);
 
   return (
     <header
